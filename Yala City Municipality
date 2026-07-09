@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Management System</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #f8fafc;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <iframe id="qmsFrame" src="https://script.google.com/macros/s/AKfycbxdrY1wufOSvnyeMYKeUa3uYt-jDCEnG0Sy-FD95KjCLv7CAiBva9QJIQQhtENwFU-j7Q/exec"></iframe>
+
+    <script>
+        // ระบบดักฟังคำสั่งจากหน้า Dashboard หลังบ้าน ถ้าสั่งให้ Logout ให้ทำการรีเซ็ต iframe ทันทีโดยหน้าเว็บไม่แครช
+        window.addEventListener('message', function(event) {
+            if (event.data === 'force_logout_refresh') {
+                var iframe = document.getElementById('qmsFrame');
+                if (iframe) {
+                    // ล้างค่าแล้วโหลดหน้าแรกของตู้กดคิว/ล็อกอินใหม่ในกรอบเดิม
+                    iframe.src = "https://script.google.com/macros/s/AKfycbxdrY1wufOSvnyeMYKeUa3uYt-jDCEnG0Sy-FD95KjCLv7CAiBva9QJIQQhtENwFU-j7Q/exec";
+                }
+            }
+        }, false);
+    </script>
+</body>
+</html>
